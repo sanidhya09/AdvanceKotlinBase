@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Top Headlines</string>
+    <string name="api_news_error">An error occurred while loading the news</string>
+    <string name="news_image">news image</string>
+</resources>
