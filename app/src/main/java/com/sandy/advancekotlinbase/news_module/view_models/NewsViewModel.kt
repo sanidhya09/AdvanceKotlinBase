@@ -8,13 +8,13 @@ import com.sandy.advancekotlinbase.R
 import com.sandy.advancekotlinbase.base_classes.BaseViewModel
 import com.sandy.advancekotlinbase.news_module.models.NewsMainModel
 import com.sandy.advancekotlinbase.news_module.models.NewsRequestModel
-import com.sandy.advancekotlinbase.news_module.network.NewsRepository
+import com.sandy.advancekotlinbase.news_module.network.NewsRemoteDataRepository
 import com.sandy.advancekotlinbase.news_module.ui.NewsListAdapter
-import com.sandy.advancekotlinbase.utility.Resource
+import com.sandy.advancekotlinbase.utility.APIState
 import kotlinx.coroutines.Dispatchers
 
 class NewsViewModel(
-    private var newsRepository: NewsRepository
+    private var newsRepository: NewsRemoteDataRepository
 ) : BaseViewModel() {
 
     val errorMessage: MutableLiveData<Int> = MutableLiveData()
@@ -23,10 +23,10 @@ class NewsViewModel(
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
 
     fun getTopHeadlines(newsRequestModel: NewsRequestModel) = liveData(Dispatchers.IO) {
-        emit(Resource.loading())
+        emit(APIState.loading())
         try {
             emit(
-                Resource.success(
+                APIState.success(
                     data = newsRepository.getTopHeadlinesSuspended(
                         newsRequestModel.country,
                         newsRequestModel.category,
@@ -35,7 +35,7 @@ class NewsViewModel(
                 )
             )
         } catch (exception: Exception) {
-            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            emit(APIState.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
     }
 

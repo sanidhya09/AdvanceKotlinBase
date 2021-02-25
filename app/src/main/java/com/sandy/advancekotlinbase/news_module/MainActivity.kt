@@ -13,7 +13,7 @@ import com.sandy.advancekotlinbase.di.DaggerAppComponent
 import com.sandy.advancekotlinbase.di.NetworkModule
 import com.sandy.advancekotlinbase.news_module.models.NewsRequestModel
 import com.sandy.advancekotlinbase.news_module.network.NewsApiService
-import com.sandy.advancekotlinbase.news_module.network.NewsRepository
+import com.sandy.advancekotlinbase.news_module.network.NewsRemoteDataRepository
 import com.sandy.advancekotlinbase.news_module.view_models.NewsViewModel
 import com.sandy.advancekotlinbase.news_module.view_models.ViewModelFactory
 import com.sandy.advancekotlinbase.utility.Result
@@ -45,8 +45,9 @@ class MainActivity : BaseActivity() {
 
         component.inject(this)
 
-        viewModel = ViewModelProviders.of(this, ViewModelFactory(NewsRepository(newsApiService)))
-            .get(NewsViewModel::class.java)
+        viewModel =
+            ViewModelProviders.of(this, ViewModelFactory(NewsRemoteDataRepository(newsApiService)))
+                .get(NewsViewModel::class.java)
 
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
             showShortToast("$errorMessage")
@@ -56,11 +57,11 @@ class MainActivity : BaseActivity() {
             val newsRequestModel =
                 NewsRequestModel("in", "sports", getString(R.string.news_api_key))
             viewModel.getTopHeadlines(newsRequestModel).observe(this, Observer {
-                it?.let { resource ->
-                    when (resource.result) {
+                it?.let { apiState ->
+                    when (apiState.result) {
                         Result.SUCCESS -> {
                             viewModel.onRetrieveFinish()
-                            resource.data?.let { newsMainModel ->
+                            apiState.data?.let { newsMainModel ->
                                 viewModel.onRetrieveSuccess(
                                     newsMainModel
                                 )
