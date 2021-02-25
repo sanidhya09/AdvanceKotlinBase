@@ -1,6 +1,6 @@
 package com.sandy.advancekotlinbase.di
 
-import com.sandy.advancekotlinbase.network.NewsApi
+import com.sandy.advancekotlinbase.network.NewsApiService
 import com.sandy.advancekotlinbase.utility.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -16,7 +16,8 @@ import java.util.concurrent.TimeUnit
 object NetworkModule {
 
     @Provides
-    internal fun provideNewsApi(retrofit: Retrofit): NewsApi = retrofit.create(NewsApi::class.java)
+    internal fun provideNewsApi(retrofit: Retrofit): NewsApiService =
+        retrofit.create(NewsApiService::class.java)
 
     @Provides
     internal fun provideRetrofitInterface(): Retrofit {

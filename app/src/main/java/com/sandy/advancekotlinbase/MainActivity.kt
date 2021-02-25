@@ -11,7 +11,7 @@ import com.sandy.advancekotlinbase.di.AppComponent
 import com.sandy.advancekotlinbase.di.DaggerAppComponent
 import com.sandy.advancekotlinbase.di.NetworkModule
 import com.sandy.advancekotlinbase.models.NewsRequestModel
-import com.sandy.advancekotlinbase.network.NewsApi
+import com.sandy.advancekotlinbase.network.NewsApiService
 import com.sandy.advancekotlinbase.ui.NewsViewModel
 import com.sandy.advancekotlinbase.ui.ViewModelFactory
 import com.sandy.advancekotlinbase.utility.Result
@@ -23,7 +23,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var newsApi: NewsApi
+    lateinit var newsApiService: NewsApiService
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: NewsViewModel
 
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         component.inject(this)
 
-        viewModel = ViewModelProviders.of(this, ViewModelFactory(newsApi))
+        viewModel = ViewModelProviders.of(this, ViewModelFactory(newsApiService))
             .get(NewsViewModel::class.java)
 
         viewModel.errorMessage.observe(this, Observer { errorMessage ->

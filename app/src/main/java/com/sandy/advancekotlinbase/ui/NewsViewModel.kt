@@ -8,12 +8,12 @@ import androidx.lifecycle.liveData
 import com.sandy.advancekotlinbase.R
 import com.sandy.advancekotlinbase.models.NewsMainModel
 import com.sandy.advancekotlinbase.models.NewsRequestModel
-import com.sandy.advancekotlinbase.network.NewsApi
+import com.sandy.advancekotlinbase.network.NewsApiService
 import com.sandy.advancekotlinbase.utility.Resource
 import kotlinx.coroutines.Dispatchers
 
 class NewsViewModel(
-    private var newsApi: NewsApi
+    private var newsApiService: NewsApiService
 ) : ViewModel() {
 
     val errorMessage: MutableLiveData<Int> = MutableLiveData()
@@ -26,7 +26,7 @@ class NewsViewModel(
         try {
             emit(
                 Resource.success(
-                    data = newsApi.getTopHeadlinesSuspended(
+                    data = newsApiService.getTopHeadlinesSuspended(
                         newsRequestModel.country,
                         newsRequestModel.category,
                         newsRequestModel.apiKey

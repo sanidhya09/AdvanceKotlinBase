@@ -4,7 +4,7 @@ import com.sandy.advancekotlinbase.models.NewsMainModel
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface NewsApi {
+interface NewsApiService {
     /**
      * Get top headlines from the API
      */
