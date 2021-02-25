@@ -1,6 +1,6 @@
 package com.sandy.advancekotlinbase.di
 
-import com.sandy.advancekotlinbase.network.NewsApiService
+import com.sandy.advancekotlinbase.news_module.network.NewsApiService
 import com.sandy.advancekotlinbase.utility.BASE_URL
 import dagger.Module
 import dagger.Provides

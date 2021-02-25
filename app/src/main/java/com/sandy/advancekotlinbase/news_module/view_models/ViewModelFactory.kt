@@ -1,8 +1,8 @@
-package com.sandy.advancekotlinbase.ui
+package com.sandy.advancekotlinbase.news_module.view_models
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.sandy.advancekotlinbase.network.NewsRepository
+import com.sandy.advancekotlinbase.news_module.network.NewsRepository
 
 class ViewModelFactory(
     private var newsRepository: NewsRepository

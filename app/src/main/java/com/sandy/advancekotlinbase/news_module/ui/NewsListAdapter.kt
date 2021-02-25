@@ -1,4 +1,4 @@
-package com.sandy.advancekotlinbase.ui
+package com.sandy.advancekotlinbase.news_module.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sandy.advancekotlinbase.R
 import com.sandy.advancekotlinbase.databinding.ItemNewsBinding
-import com.sandy.advancekotlinbase.models.NewsArticlesModel
+import com.sandy.advancekotlinbase.news_module.models.NewsArticlesModel
+import com.sandy.advancekotlinbase.news_module.view_models.NewsItemViewModel
 import com.squareup.picasso.Picasso
 
 class NewsListAdapter : RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {

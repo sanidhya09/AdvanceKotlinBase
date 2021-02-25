@@ -1,4 +1,4 @@
-package com.sandy.advancekotlinbase.network
+package com.sandy.advancekotlinbase.news_module.network
 
 class NewsRepository(private var newsApiService: NewsApiService) {
 

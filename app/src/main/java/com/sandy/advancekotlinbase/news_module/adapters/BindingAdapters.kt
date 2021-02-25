@@ -1,4 +1,4 @@
-package com.sandy.advancekotlinbase.utility
+package com.sandy.advancekotlinbase.news_module.adapters
 
 import android.content.Context
 import android.content.ContextWrapper

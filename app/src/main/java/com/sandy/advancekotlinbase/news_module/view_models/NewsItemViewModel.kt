@@ -1,8 +1,8 @@
-package com.sandy.advancekotlinbase.ui
+package com.sandy.advancekotlinbase.news_module.view_models
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sandy.advancekotlinbase.models.NewsArticlesModel
+import com.sandy.advancekotlinbase.news_module.models.NewsArticlesModel
 
 class NewsItemViewModel : ViewModel() {
     private val newsTitle = MutableLiveData<String>()

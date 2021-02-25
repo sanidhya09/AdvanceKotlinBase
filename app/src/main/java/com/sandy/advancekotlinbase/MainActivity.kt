@@ -10,11 +10,11 @@ import com.sandy.advancekotlinbase.databinding.ActivityMainBinding
 import com.sandy.advancekotlinbase.di.AppComponent
 import com.sandy.advancekotlinbase.di.DaggerAppComponent
 import com.sandy.advancekotlinbase.di.NetworkModule
-import com.sandy.advancekotlinbase.models.NewsRequestModel
-import com.sandy.advancekotlinbase.network.NewsApiService
-import com.sandy.advancekotlinbase.network.NewsRepository
-import com.sandy.advancekotlinbase.ui.NewsViewModel
-import com.sandy.advancekotlinbase.ui.ViewModelFactory
+import com.sandy.advancekotlinbase.news_module.models.NewsRequestModel
+import com.sandy.advancekotlinbase.news_module.network.NewsApiService
+import com.sandy.advancekotlinbase.news_module.network.NewsRepository
+import com.sandy.advancekotlinbase.news_module.view_models.NewsViewModel
+import com.sandy.advancekotlinbase.news_module.view_models.ViewModelFactory
 import com.sandy.advancekotlinbase.utility.Result
 import com.sandy.advancekotlinbase.utility.hasNetwork
 import com.sandy.advancekotlinbase.utility.showLongToast

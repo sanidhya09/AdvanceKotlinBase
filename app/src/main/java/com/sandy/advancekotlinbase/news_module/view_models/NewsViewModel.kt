@@ -1,4 +1,4 @@
-package com.sandy.advancekotlinbase.ui
+package com.sandy.advancekotlinbase.news_module.view_models
 
 import android.util.Log
 import android.view.View
@@ -6,9 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.sandy.advancekotlinbase.R
-import com.sandy.advancekotlinbase.models.NewsMainModel
-import com.sandy.advancekotlinbase.models.NewsRequestModel
-import com.sandy.advancekotlinbase.network.NewsRepository
+import com.sandy.advancekotlinbase.news_module.models.NewsMainModel
+import com.sandy.advancekotlinbase.news_module.models.NewsRequestModel
+import com.sandy.advancekotlinbase.news_module.network.NewsRepository
+import com.sandy.advancekotlinbase.news_module.ui.NewsListAdapter
 import com.sandy.advancekotlinbase.utility.Resource
 import kotlinx.coroutines.Dispatchers
 

@@ -1,4 +1,4 @@
-package com.sandy.advancekotlinbase.models
+package com.sandy.advancekotlinbase.news_module.models
 
 data class NewsMainModel(
     val status: String,
