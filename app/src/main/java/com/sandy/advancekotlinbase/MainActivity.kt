@@ -12,6 +12,7 @@ import com.sandy.advancekotlinbase.di.DaggerAppComponent
 import com.sandy.advancekotlinbase.di.NetworkModule
 import com.sandy.advancekotlinbase.models.NewsRequestModel
 import com.sandy.advancekotlinbase.network.NewsApiService
+import com.sandy.advancekotlinbase.network.NewsRepository
 import com.sandy.advancekotlinbase.ui.NewsViewModel
 import com.sandy.advancekotlinbase.ui.ViewModelFactory
 import com.sandy.advancekotlinbase.utility.Result
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         component.inject(this)
 
-        viewModel = ViewModelProviders.of(this, ViewModelFactory(newsApiService))
+        viewModel = ViewModelProviders.of(this, ViewModelFactory(NewsRepository(newsApiService)))
             .get(NewsViewModel::class.java)
 
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
