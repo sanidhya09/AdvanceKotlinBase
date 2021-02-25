@@ -3,9 +3,9 @@ package com.sandy.advancekotlinbase.news_module.view_models
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.sandy.advancekotlinbase.R
+import com.sandy.advancekotlinbase.base_classes.BaseViewModel
 import com.sandy.advancekotlinbase.news_module.models.NewsMainModel
 import com.sandy.advancekotlinbase.news_module.models.NewsRequestModel
 import com.sandy.advancekotlinbase.news_module.network.NewsRepository
@@ -15,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 
 class NewsViewModel(
     private var newsRepository: NewsRepository
-) : ViewModel() {
+) : BaseViewModel() {
 
     val errorMessage: MutableLiveData<Int> = MutableLiveData()
 

@@ -1,12 +1,12 @@
 package com.sandy.advancekotlinbase.news_module
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sandy.advancekotlinbase.R
+import com.sandy.advancekotlinbase.base_classes.BaseActivity
 import com.sandy.advancekotlinbase.databinding.ActivityMainBinding
 import com.sandy.advancekotlinbase.di.AppComponent
 import com.sandy.advancekotlinbase.di.DaggerAppComponent
@@ -22,7 +22,7 @@ import com.sandy.advancekotlinbase.utility.showLongToast
 import com.sandy.advancekotlinbase.utility.showShortToast
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     @Inject
     lateinit var newsApiService: NewsApiService
