@@ -13,8 +13,7 @@ import com.sandy.advancekotlinbase.utility.Resource
 import kotlinx.coroutines.Dispatchers
 
 class NewsViewModel(
-    private var newsApi: NewsApi,
-    private var newsRequestModel: NewsRequestModel
+    private var newsApi: NewsApi
 ) : ViewModel() {
 
     val errorMessage: MutableLiveData<Int> = MutableLiveData()
@@ -22,7 +21,7 @@ class NewsViewModel(
     val newsListAdapter: NewsListAdapter = NewsListAdapter()
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
 
-    fun getTopHeadlines() = liveData(Dispatchers.IO) {
+    fun getTopHeadlines(newsRequestModel: NewsRequestModel) = liveData(Dispatchers.IO) {
         emit(Resource.loading())
         try {
             emit(

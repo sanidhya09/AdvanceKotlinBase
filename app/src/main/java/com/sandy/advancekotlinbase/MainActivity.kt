@@ -43,9 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         component.inject(this)
 
-        val newsRequestModel = NewsRequestModel("in", "sports", getString(R.string.news_api_key))
-
-        viewModel = ViewModelProviders.of(this, ViewModelFactory(newsApi, newsRequestModel))
+        viewModel = ViewModelProviders.of(this, ViewModelFactory(newsApi))
             .get(NewsViewModel::class.java)
 
         viewModel.errorMessage.observe(this, Observer { errorMessage ->
@@ -53,7 +51,9 @@ class MainActivity : AppCompatActivity() {
         })
 
         if (hasNetwork()!!) {
-            viewModel.getTopHeadlines().observe(this, Observer {
+            val newsRequestModel =
+                NewsRequestModel("in", "sports", getString(R.string.news_api_key))
+            viewModel.getTopHeadlines(newsRequestModel).observe(this, Observer {
                 it?.let { resource ->
                     when (resource.result) {
                         Result.SUCCESS -> {
