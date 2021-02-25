@@ -1,4 +1,4 @@
-package com.sandy.advancekotlinbase
+package com.sandy.advancekotlinbase.news_module
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sandy.advancekotlinbase.R
 import com.sandy.advancekotlinbase.databinding.ActivityMainBinding
 import com.sandy.advancekotlinbase.di.AppComponent
 import com.sandy.advancekotlinbase.di.DaggerAppComponent

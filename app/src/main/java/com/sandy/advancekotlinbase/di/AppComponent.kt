@@ -1,6 +1,6 @@
 package com.sandy.advancekotlinbase.di
 
-import com.sandy.advancekotlinbase.MainActivity
+import com.sandy.advancekotlinbase.news_module.MainActivity
 import com.sandy.advancekotlinbase.news_module.view_models.NewsViewModel
 import dagger.Component
 import javax.inject.Singleton
