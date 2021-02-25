@@ -2,7 +2,6 @@ package com.sandy.advancekotlinbase.news_module
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sandy.advancekotlinbase.R
@@ -11,7 +10,7 @@ import com.sandy.advancekotlinbase.databinding.ActivityMainBinding
 import com.sandy.advancekotlinbase.di.AppComponent
 import com.sandy.advancekotlinbase.di.DaggerAppComponent
 import com.sandy.advancekotlinbase.di.NetworkModule
-import com.sandy.advancekotlinbase.news_module.models.NewsRequestModel
+import com.sandy.advancekotlinbase.news_module.models.request_models.NewsRequestModel
 import com.sandy.advancekotlinbase.news_module.network.NewsApiService
 import com.sandy.advancekotlinbase.news_module.network.NewsRemoteDataRepository
 import com.sandy.advancekotlinbase.news_module.view_models.NewsViewModel
@@ -49,8 +48,8 @@ class MainActivity : BaseActivity() {
             ViewModelProviders.of(this, ViewModelFactory(NewsRemoteDataRepository(newsApiService)))
                 .get(NewsViewModel::class.java)
 
-        viewModel.errorMessage.observe(this, Observer { errorMessage ->
-            showShortToast("$errorMessage")
+        viewModel.errorMessage.observe(this, { errorMessage ->
+            showShortToast(errorMessage)
         })
 
         if (hasNetwork()!!) {
@@ -67,7 +66,7 @@ class MainActivity : BaseActivity() {
                         }
                         Result.ERROR -> {
                             viewModel.onRetrieveFinish()
-                            viewModel.onRetrieveError()
+                            viewModel.onRetrieveError(getString(R.string.api_news_error))
                         }
                         Result.LOADING -> {
                             viewModel.onRetrieveStart()

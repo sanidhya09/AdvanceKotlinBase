@@ -4,10 +4,9 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
-import com.sandy.advancekotlinbase.R
 import com.sandy.advancekotlinbase.base_classes.BaseViewModel
 import com.sandy.advancekotlinbase.news_module.models.NewsMainModel
-import com.sandy.advancekotlinbase.news_module.models.NewsRequestModel
+import com.sandy.advancekotlinbase.news_module.models.request_models.NewsRequestModel
 import com.sandy.advancekotlinbase.news_module.network.NewsRemoteDataRepository
 import com.sandy.advancekotlinbase.news_module.ui.NewsListAdapter
 import com.sandy.advancekotlinbase.utility.APIState
@@ -17,7 +16,7 @@ class NewsViewModel(
     private var newsRepository: NewsRemoteDataRepository
 ) : BaseViewModel() {
 
-    val errorMessage: MutableLiveData<Int> = MutableLiveData()
+    val errorMessage: MutableLiveData<String> = MutableLiveData()
 
     val newsListAdapter: NewsListAdapter = NewsListAdapter()
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
@@ -27,7 +26,7 @@ class NewsViewModel(
         try {
             emit(
                 APIState.success(
-                    data = newsRepository.getTopHeadlinesSuspended(
+                    data = newsRepository.getTopHeadlines(
                         newsRequestModel.country,
                         newsRequestModel.category,
                         newsRequestModel.apiKey
@@ -49,10 +48,13 @@ class NewsViewModel(
 
     fun onRetrieveSuccess(newsMainModel: NewsMainModel) {
         Log.i("newsMainModel", "newsMainModel::${newsMainModel.status}")
-        newsListAdapter.updateNewsList(newsMainModel.articles)
+        if (newsMainModel.articles.isNotEmpty())
+            newsListAdapter.updateNewsList(newsMainModel.articles)
+        else
+            onRetrieveError("Something went wrong!!")
     }
 
-    fun onRetrieveError() {
-        errorMessage.value = R.string.api_news_error
+    fun onRetrieveError(message: String) {
+        errorMessage.value = message
     }
 }
