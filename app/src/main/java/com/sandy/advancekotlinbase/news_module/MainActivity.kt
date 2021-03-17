@@ -55,7 +55,8 @@ class MainActivity : BaseActivity() {
         if (hasNetwork()!!) {
             val newsRequestModel =
                 NewsRequestModel("in", "sports", getString(R.string.news_api_key))
-            viewModel.getTopHeadlines(newsRequestModel).observe(this, {
+            viewModel.getTopHeadlines(newsRequestModel)
+            viewModel.observeSrpLiveData.observe(this, {
                 it?.let { apiState ->
                     when (apiState.result) {
                         Result.SUCCESS -> {
