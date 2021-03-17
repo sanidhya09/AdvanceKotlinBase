@@ -11,10 +11,13 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
 class NewsViewModelTest {
+    @Mock
     lateinit var viewModel: NewsViewModel
 
     @Mock
     lateinit var newsApiService: NewsApiService
+
+    @Mock
     lateinit var newsRemoteDataRepository: NewsRemoteDataRepository
 
     private lateinit var newsRequestModel: NewsRequestModel
@@ -23,8 +26,6 @@ class NewsViewModelTest {
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         newsRequestModel = NewsRequestModel("in", "sports", "")
-        newsRemoteDataRepository = NewsRemoteDataRepository(newsApiService)
-        viewModel = NewsViewModel(newsRemoteDataRepository)
 
     }
 

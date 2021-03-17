@@ -40,7 +40,7 @@ class NewsViewModel(
     }
 
     fun onRetrieveError(message: String) {
-        errorMessage.value = message
+        errorMessage.postValue(message)
     }
 
     private val srpLiveData = MutableLiveData<NewsRequestModel>()
