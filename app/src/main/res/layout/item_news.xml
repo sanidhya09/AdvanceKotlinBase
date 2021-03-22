@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.sandy.advancekotlinbase.news_module.view_models.NewsItemViewModel" />
+            type="com.engineering.baseproj.news_module.view_models.NewsItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
