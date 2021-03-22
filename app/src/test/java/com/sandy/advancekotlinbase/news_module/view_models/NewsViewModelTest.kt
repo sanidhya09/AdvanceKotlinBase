@@ -5,10 +5,16 @@ import com.sandy.advancekotlinbase.news_module.models.request_models.NewsRequest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
+import org.mockito.junit.MockitoJUnitRunner
 
+
+@RunWith(
+    MockitoJUnitRunner::class
+)
 class NewsViewModelTest {
     @Mock
     lateinit var viewModel: NewsViewModel
@@ -47,5 +53,12 @@ class NewsViewModelTest {
 
         viewModel.getTopHeadlines(newsRequestModel)
         Mockito.verify(viewModel)?.getTopHeadlines(newsRequestModel)
+    }
+
+    @Test
+    fun testObserverHeadlines() {
+
+        viewModel.observeSrpLiveData
+        Mockito.verify(viewModel)?.observeSrpLiveData
     }
 }
